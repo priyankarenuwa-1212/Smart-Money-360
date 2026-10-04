@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173F5F">
+  <meta name="description" content="Smart Money 360 - simple financial planning for students and young adults">
+  <title>Smart Money 360</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <div class="brand"><span class="rupee">₹</span> Smart Money <b>360</b></div>
+        <p id="greeting">Good evening 👋</p>
+      </div>
+      <button class="icon-btn" aria-label="Notifications">🔔</button>
+    </header>
+
+    <main id="screen">
+      <section class="page active" id="home">
+        <div class="hero-card">
+          <div>
+            <span class="eyebrow">FINANCIAL HEALTH</span>
+            <h1>You're doing great!</h1>
+            <p>Small money habits today create a stronger future.</p>
+          </div>
+          <div class="score"><strong>82</strong><span>/100</span></div>
+        </div>
+
+        <div class="section-title"><h2>Money Snapshot</h2><button onclick="toast('Budget details opened')">View all</button></div>
+        <div class="cards two">
+          <div class="stat-card"><span>💰</span><small>Balance</small><strong>₹18,450</strong><em>+8.4%</em></div>
+          <div class="stat-card"><span>🎯</span><small>Goal progress</small><strong>64%</strong><em>On track</em></div>
+        </div>
+
+        <div class="section-title"><h2>Quick Actions</h2></div>
+        <div class="quick-grid">
+          <button onclick="openPage('goals')">🎯<span>Goals</span></button>
+          <button onclick="openPage('lab')">🧪<span>What-If Lab</span></button>
+          <button onclick="openPage('coach')">🤖<span>Coach</span></button>
+          <button onclick="openPage('learn')">📚<span>Learn</span></button>
+        </div>
+
+        <div class="section-title"><h2>Today's Mission</h2></div>
+        <div class="mission" onclick="completeMission(this)">
+          <div class="mission-icon">🏆</div>
+          <div><strong>Save ₹100 today</strong><p>Skip one unnecessary expense and add it to your goal.</p></div>
+          <span>›</span>
+        </div>
+      </section>
+
+      <section class="page" id="goals">
+        <div class="page-heading"><span class="big-icon">🎯</span><div><h1>My Goals</h1><p>Turn plans into progress.</p></div></div>
+        <div class="goal-card"><div class="goal-head"><strong>New Laptop</strong><b>64%</b></div><p>₹32,000 of ₹50,000</p><div class="progress"><i style="width:64%"></i></div><button onclick="toast('₹500 added to Laptop goal!')">+ Add ₹500</button></div>
+        <div class="goal-card"><div class="goal-head"><strong>Emergency Fund</strong><b>42%</b></div><p>₹8,400 of ₹20,000</p><div class="progress"><i style="width:42%"></i></div><button onclick="toast('Emergency Fund contribution added!')">+ Add ₹500</button></div>
+        <button class="primary" onclick="toast('Create Goal form opened')">＋ Create New Goal</button>
+      </section>
+
+      <section class="page" id="lab">
+        <div class="page-heading"><span class="big-icon">🧪</span><div><h1>What-If Money Lab</h1><p>See how small choices change your future.</p></div></div>
+        <div class="lab-card">
+          <label>Monthly saving</label><div class="money-input"><span>₹</span><input id="saving" type="number" value="2000" min="0" oninput="calculate()"></div>
+          <label>Time period: <b id="yearsLabel">3 years</b></label><input id="years" type="range" min="1" max="10" value="3" oninput="calculate()">
+          <div class="result"><small>Estimated savings</small><strong id="result">₹72,000</strong><p>without assuming investment returns</p></div>
+        </div>
+        <div class="tip">💡 <strong>Smart tip:</strong> Increasing your monthly saving by just ₹500 can make a meaningful difference over time.</div>
+      </section>
+
+      <section class="page" id="coach">
+        <div class="page-heading"><span class="big-icon">🤖</span><div><h1>Smart Money Coach</h1><p>Your friendly financial guide.</p></div></div>
+        <div class="chat">
+          <div class="bubble bot">Hi! 👋 I’m your Smart Money Coach. What would you like help with?</div>
+          <button onclick="coachReply('budget')">How do I make a budget?</button>
+          <button onclick="coachReply('save')">How can I save more?</button>
+          <button onclick="coachReply('invest')">What is investing?</button>
+          <div id="reply"></div>
+        </div>
+      </section>
+
+      <section class="page" id="learn">
+        <div class="page-heading"><span class="big-icon">📚</span><div><h1>Invest & Learn</h1><p>Learn money skills in simple language.</p></div></div>
+        <article class="lesson" onclick="toast('Lesson opened: 50/30/20 Rule')"><span>💡</span><div><strong>50/30/20 Rule</strong><p>A simple way to divide your income.</p></div><b>›</b></article>
+        <article class="lesson" onclick="toast('Lesson opened: Emergency Funds')"><span>🛡️</span><div><strong>Emergency Funds</strong><p>Why keeping a safety buffer matters.</p></div><b>›</b></article>
+        <article class="lesson" onclick="toast('Lesson opened: Scam Shield')"><span>🚨</span><div><strong>Scam Shield</strong><p>Spot common financial scams before they hurt.</p></div><b>›</b></article>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="home" onclick="openPage('home')">⌂<span>Home</span></button>
+      <button class="nav-item" data-page="goals" onclick="openPage('goals')">🎯<span>Goals</span></button>
+      <button class="nav-item" data-page="lab" onclick="openPage('lab')">🧪<span>Lab</span></button>
+      <button class="nav-item" data-page="coach" onclick="openPage('coach')">🤖<span>Coach</span></button>
+      <button class="nav-item" data-page="learn" onclick="openPage('learn')">📚<span>Learn</span></button>
+    </nav>
+    <div id="toast"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
