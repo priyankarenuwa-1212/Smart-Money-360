@@ -1,0 +1,18 @@
+{
+  "name": "Smart Money 360",
+  "short_name": "Smart Money",
+  "description": "Simple financial planning and learning app",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#173f5f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='110' fill='%23173f5f'/%3E%3Ctext x='256' y='330' text-anchor='middle' font-size='300' fill='white'%3E\u20b9%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
